@@ -1,4 +1,4 @@
-import { integer, pgTable, varchar, text } from 'drizzle-orm/pg-core';
+import { integer, pgTable, varchar, text, serial, timestamp, serial, timestamp } from 'drizzle-orm/pg-core';
 
 export const posts = pgTable('posts', {
     id: integer().primaryKey().generatedAlwaysAsIdentity(),
@@ -6,11 +6,9 @@ export const posts = pgTable('posts', {
     content: text().notNull().default('')
 });
 
-import { pgTable, serial, varchar, timestamp } from "drizzle-orm/pg-core";
-
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  email: varchar("email", { length: 255 }).notNull().unique(),
-  password_hash: varchar("password_hash", { length: 255 }).notNull(),
-  created_at: timestamp("created_at").defaultNow(),
+export const users = pgTable("users", { 
+    id: serial("id").primaryKey(),
+    email: varchar("email", { length: 255 }).notNull().unique(),
+    password_hash: varchar("password_hash", { length: 255 }).notNull(),
+    created_at: timestamp("created_at").defaultNow(), 
 });
