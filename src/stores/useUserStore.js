@@ -78,6 +78,8 @@ export const useUserStore = defineStore('user', () => {
     subscriptionId,
     isLoggedIn,
     disabled,
+    showLoginModal,
+    showRegisterModal,
 
     // Actions
     login,

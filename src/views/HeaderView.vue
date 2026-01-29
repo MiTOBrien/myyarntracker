@@ -1,13 +1,22 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/useUserStore'
 import LoginModal from '@/components/LoginModal.vue'
 import RegisterModal from '@/components/RegisterModal.vue'
 
 const userStore = useUserStore()
-const openLoginModal = (login) => {
-  userStore.showLoginModal = login
+
+const name = computed(() => userStore.name)
+
+const openLoginModal = () => {
+  userStore.showLoginModal = true
+  console.log('Modal state:', userStore.showLoginModal)
+}
+console.log('Modal state:', userStore.showLoginModal)
+
+const handleLogout = () => {
+  userStore.logout()
 }
 
 const isMenuOpen = ref(false)
@@ -29,8 +38,8 @@ const closeMenu = () => {
 
     <!-- Desktop navigation -->
     <div class="right-nav desktop-nav">
-      <RouterLink class="nav-link" to="/about">Yarn Stash</RouterLink>
-      <RouterLink class="nav-link" to="/current">Patterns</RouterLink>
+      <RouterLink class="nav-link" to="/stash">Yarn Stash</RouterLink>
+      <RouterLink class="nav-link" to="/patterns">Patterns</RouterLink>
       <div class="navbar-end">
         <div v-if="userStore.isLoggedIn" class="navbar-item">
           Welcome, {{ name }}
