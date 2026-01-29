@@ -1,6 +1,14 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/useUserStore'
+import LoginModal from '@/components/LoginModal.vue'
+import RegisterModal from '@/components/RegisterModal.vue'
+
+const userStore = useUserStore()
+const openLoginModal = (login) => {
+  userStore.showLoginModal = login
+}
 
 const isMenuOpen = ref(false)
 
@@ -23,6 +31,15 @@ const closeMenu = () => {
     <div class="right-nav desktop-nav">
       <RouterLink class="nav-link" to="/about">Yarn Stash</RouterLink>
       <RouterLink class="nav-link" to="/current">Patterns</RouterLink>
+      <div class="navbar-end">
+        <div v-if="userStore.isLoggedIn" class="navbar-item">
+          Welcome, {{ name }}
+          <button @click="handleLogout" class="button nav-button is-light">Logout</button>
+        </div>
+        <div v-else class="navbar-item">
+          <button @click="openLoginModal" class="button nav-button is-primary">Login</button>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile hamburger button -->
@@ -38,6 +55,27 @@ const closeMenu = () => {
       <RouterLink class="nav-link" to="/current" @click="closeMenu">Patterns</RouterLink>
     </div>
   </nav>
+
+  <LoginModal
+    v-if="userStore.showLoginModal"
+    @close="userStore.showLoginModal = false"
+    @open-register="
+      () => {
+        userStore.showLoginModal = false
+        userStore.showRegisterModal = true
+      }
+    "
+  />
+  <RegisterModal
+    v-if="userStore.showRegisterModal"
+    @close="userStore.showRegisterModal = false"
+    @open-login="
+      () => {
+        userStore.showRegisterModal = false
+        userStore.showLoginModal = true
+      }
+    "
+  />
 </template>
 
 <style scoped>
