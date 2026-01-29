@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-// import { useUserStore } from '@/stores/useUserStore'
+import { useUserStore } from '@/stores/useUserStore'
 import { PASSWORD_REGEX, isValidPassword } from '@/utils/passwordRules'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
