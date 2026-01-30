@@ -6,7 +6,6 @@ import { PASSWORD_REGEX, isValidPassword } from '@/utils/passwordRules'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 const email = ref('')
-const name = ref('')
 const password = ref('')
 const showPassword = ref(false)
 const confirmPassword = ref('')
@@ -43,13 +42,14 @@ const register = async () => {
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/signup`, {
+    console.log('Registering user:', email.value) // Debug log
+    console.log('API Base URL:', API_BASE_URL) // Debug log
+    const response = await fetch(`${API_BASE_URL}/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         user: {
           email: email.value,
-          name: name.value,
           password: password.value,
           confirm_password: confirmPassword.value,
           tos_accepted: acceptedTOS.value,
@@ -85,18 +85,6 @@ const register = async () => {
             id="email"
             name="email"
             placeholder="Enter your email address"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label class="modal-text" for="name">Name:</label>
-          <input
-            v-model="name"
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
             required
           />
         </div>
