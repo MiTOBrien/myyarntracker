@@ -1,3 +1,4 @@
+@import './header.css';
 @import './modal.css';
 
 * {
@@ -14,12 +15,15 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+  font-family: 'Nunito', system-ui, sans-serif;
 }
 
 main {
   padding-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
+  color: var(--color-primary);
 }
