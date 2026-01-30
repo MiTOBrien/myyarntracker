@@ -1,5 +1,5 @@
 import { db } from "../db/client.js";
-import { users } from "../../schema.js";
+import { users } from "../../db/schema.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { eq } from "drizzle-orm";

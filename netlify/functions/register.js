@@ -1,5 +1,5 @@
 import { db } from "../db/client.js";
-import { users } from "../../schema.js";
+import { users } from "../../db/schema.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { eq } from "drizzle-orm";
@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm";
 export default async function (request) {
   try {
     const body = await request.json();
-    const { email, password } = body;
+    const { email, password } = body.user || {};
 
     if (!email || !password) {
       return new Response(JSON.stringify({ error: "Email and password required" }), { status: 400 });
