@@ -29,7 +29,25 @@ const filteredYarnStash = computed(() => {
       (selectedWeightFilter.value === 'bulky' && stash.weight === 'bulky') ||
       (selectedWeightFilter.value === 'superbulky' && stash.weight === 'superbulky') ||
       (selectedWeightFilter.value === 'jumbo' && stash.weight === 'jumbo')
-    return matchesSearch && matchesWeight
+
+      const matchesFiber =
+      selectedFiberFilter.value === 'all' ||
+      (selectedFiberFilter.value === 'alpaca' && stash.fiber === 'alpaca') ||
+      (selectedFiberFilter.value === 'angora' && stash.fiber === 'angora') ||
+      (selectedFiberFilter.value === 'cashmere' && stash.fiber === 'cashmere') ||
+      (selectedFiberFilter.value === 'mohair' && stash.fiber === 'mohair') ||
+      (selectedFiberFilter.value === 'silk' && stash.fiber === 'silk') ||
+      (selectedFiberFilter.value === 'wool' && stash.fiber === 'wool') ||
+      (selectedFiberFilter.value === 'bamboo' && stash.fiber === 'bamboo') ||
+      (selectedFiberFilter.value === 'cotton' && stash.fiber === 'cotton') ||
+      (selectedFiberFilter.value === 'linen' && stash.fiber === 'linen') ||
+      (selectedFiberFilter.value === 'rayon' && stash.fiber === 'rayon') ||
+      (selectedFiberFilter.value === 'acrylic' && stash.fiber === 'acrylic') ||
+      (selectedFiberFilter.value === 'nylon' && stash.fiber === 'nylon') ||
+      (selectedFiberFilter.value === 'polyester' && stash.fiber === 'polyester') ||
+      (selectedFiberFilter.value === 'stellina' && stash.fiber === 'stellina')
+      
+    return matchesSearch && matchesWeight && matchesFiber
   })
 })
 </script>
@@ -63,6 +81,26 @@ const filteredYarnStash = computed(() => {
           <option value="bulky">5 - Bulky(Chunky)</option>
           <option value="superbulky">6 - Super Bulky</option>
           <option value="jumbo">7 - Jumbo</option>
+        </select>
+      </div>
+
+            <div class="filter-group">
+        <label for="fiber-filter">Fiber:</label>
+        <select v-model="selectedFiberFilter" id="fiber-filter" class="filter-select">
+          <option value="all">All Fibers</option>
+          <option value="alpaca">Alpaca</option>
+          <option value="cashmere">Cashmere</option>
+          <option value="mohair">Mohair</option>
+          <option value="silk">Silk</option>
+          <option value="wool">Wool</option>
+          <option value="bamboo">Bamboo</option>
+          <option value="cotton">Cotton</option>
+          <option value="linen">Linen</option>
+          <option value="rayon">Rayon</option>
+          <option value="acrylic">Acrylic</option>
+          <option value="nylon">Nylon</option>
+          <option value="polyester">Polyester</option>
+          <option value="stellina">Stellina</option>
         </select>
       </div>
     </div>
