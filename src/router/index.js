@@ -19,6 +19,16 @@ const router = createRouter({
       name: 'patterns',
       component: () => import('../views/PatternsView.vue'),
     },
+    {
+      path: '/tos',
+      name: 'tos',
+      component: () => import('../views/TermsOfServiceView.vue'),
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: () => import('../views/PrivacyPolicyView.vue'),
+    },
   ],
 })
 
