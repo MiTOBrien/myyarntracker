@@ -19,14 +19,17 @@ const filteredYarnStash = computed(() => {
       stash.name?.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
       stash.description?.toLowerCase().includes(searchQuery.value.toLowerCase())
 
-    const matchesDifficulty =
-      selectedDifficultyFilter.value === 'all' ||
-      (selectedDifficultyFilter.value === 'easy' && stash.difficulty === 'easy') ||
-      (selectedDifficultyFilter.value === 'medium' && stash.difficulty === 'medium') ||
-      (selectedDifficultyFilter.value === 'hard' && stash.difficulty === 'hard') ||
-      (selectedDifficultyFilter.value === 'expert' && stash.difficulty === 'expert')
-
-    return matchesSearch && matchesDifficulty
+    const matchesWeight =
+      selectedWeightFilter.value === 'all' ||
+      (selectedWeightFilter.value === 'lace' && stash.weight === 'lace') ||
+      (selectedWeightFilter.value === 'superfine' && stash.weight === 'superfine') ||
+      (selectedWeightFilter.value === 'fine' && stash.weight === 'fine') ||
+      (selectedWeightFilter.value === 'light' && stash.weight === 'light') ||
+      (selectedWeightFilter.value === 'medium' && stash.weight === 'medium') ||
+      (selectedWeightFilter.value === 'bulky' && stash.weight === 'bulky') ||
+      (selectedWeightFilter.value === 'superbulky' && stash.weight === 'superbulky') ||
+      (selectedWeightFilter.value === 'jumbo' && stash.weight === 'jumbo')
+    return matchesSearch && matchesWeight
   })
 })
 </script>
@@ -49,13 +52,17 @@ const filteredYarnStash = computed(() => {
 
     <div class="filters">
       <div class="filter-group">
-        <label for="difficulty-filter">Difficulty:</label>
-        <select v-model="selectedDifficultyFilter" id="difficulty-filter" class="filter-select">
-          <option value="all">All Levels</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-          <option value="expert">Expert</option>
+        <label for="weight-filter">Weight:</label>
+        <select v-model="selectedWeightFilter" id="weight-filter" class="filter-select">
+          <option value="all">All Weights</option>
+          <option value="lace">0 - Lace</option>
+          <option value="superfine">1 - Superfine(Fingering/Sock)</option>
+          <option value="fine">2 - Fine(Sport/Baby)</option>
+          <option value="light">3 - Light(DK/Double Knit)</option>
+          <option value="medium">4 - Medium(Worsted/Aran/Afghan)</option>
+          <option value="bulky">5 - Bulky(Chunky)</option>
+          <option value="superbulky">6 - Super Bulky</option>
+          <option value="jumbo">7 - Jumbo</option>
         </select>
       </div>
     </div>
