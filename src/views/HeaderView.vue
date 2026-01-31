@@ -60,8 +60,8 @@ const closeMenu = () => {
 
     <!-- Mobile navigation menu -->
     <div class="mobile-nav" :class="{ open: isMenuOpen }">
-      <RouterLink class="nav-link" to="/about" @click="closeMenu">Yarn Stash</RouterLink>
-      <RouterLink class="nav-link" to="/current" @click="closeMenu">Patterns</RouterLink>
+      <RouterLink class="nav-link" to="/stash" @click="closeMenu">Yarn Stash</RouterLink>
+      <RouterLink class="nav-link" to="/patterns" @click="closeMenu">Patterns</RouterLink>
     </div>
   </nav>
 
