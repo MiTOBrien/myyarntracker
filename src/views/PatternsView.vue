@@ -1,11 +1,20 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useUserStore } from '@/stores/useUserStore'
+import Patternsmodal from '@/components/Patternsmodal.vue'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 const userStore = useUserStore()
 const searchQuery = ref('')
 const selectedDifficultyFilter = ref('all')
+
+const showPatternModal = ref(false)
+const openPatternModal = () => {
+  showPatternModal.value = true
+}
+const closePatternModal = () => {
+  showPatternModal.value = false
+}
 
 const clearFilters = () => {
   searchQuery.value = ''
@@ -33,10 +42,8 @@ const filteredYarnStash = computed(() => {
 
 <template>
   <h1>Yarn Patterns</h1>
-  <h2>
-    Explore and manage your knitting and crochet patterns here.
-  </h2>
-  <p>Add a pattern</p>
+  <h2>Explore and manage your knitting and crochet patterns here.</h2>
+  <button class="add-pattern-btn" @click="openPatternModal">Add a Pattern</button>
   <h3>Filter Options</h3>
   <!-- Search and Filter Section -->
   <div class="search-filters">
@@ -62,4 +69,6 @@ const filteredYarnStash = computed(() => {
       </div>
     </div>
   </div>
+
+  <Patternsmodal v-if="showPatternModal" @close="closePatternModal" />
 </template>
