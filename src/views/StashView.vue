@@ -1,11 +1,20 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useUserStore } from '@/stores/useUserStore'
+import StashModal from '@/components/StashModal.vue'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 const userStore = useUserStore()
 const searchQuery = ref('')
 const selectedDifficultyFilter = ref('all')
+
+const showStashModal = ref(false)
+const openStashModal = () => {
+  showStashModal.value = true
+}
+const closeStashModal = () => {
+  showStashModal.value = false
+}
 
 const clearFilters = () => {
   searchQuery.value = ''
@@ -56,6 +65,7 @@ const filteredYarnStash = computed(() => {
   <h1>Yarn Stash</h1>
   <h2>Manage and organize your yarn stash here.</h2>
   <p>Add yarn to your stash</p>
+  <button class="add-stash-btn" @click="openStashModal">Add to Stash</button>
   <h3>Filter Options</h3>
   <!-- Search and Filter Section -->
   <div class="search-filters">
