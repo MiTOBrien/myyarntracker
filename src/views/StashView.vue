@@ -115,6 +115,8 @@ const filteredYarnStash = computed(() => {
       </div>
     </div>
   </div>
+
+  <StashModal v-if="showStashModal" @close="closeStashModal" />
 </template>
 
 <style scoped></style>

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useUserStore } from '@/stores/useUserStore'
-import Patternsmodal from '@/components/PatternsModal.vue'
+import PatternsModal from '@/components/PatternsModal.vue'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 const userStore = useUserStore()
@@ -70,5 +70,5 @@ const filteredYarnStash = computed(() => {
     </div>
   </div>
 
-  <Patternsmodal v-if="showPatternModal" @close="closePatternModal" />
+  <PatternsModal v-if="showPatternModal" @close="closePatternModal" />
 </template>
