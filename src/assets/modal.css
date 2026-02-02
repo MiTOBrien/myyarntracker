@@ -78,7 +78,7 @@
   cursor: not-allowed;
 }
 
-.pattern-form {
+.pattern-form, .stash-form {
   position: relative;
   background: var(--color-surface); /* white card on linen bg */
   color: var(--color-text);
