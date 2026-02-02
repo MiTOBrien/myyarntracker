@@ -5,16 +5,12 @@ import { useUserStore } from '@/stores/useUserStore'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 const name = ref('')
-const description = ref('')
-const difficulty = ref(false)
+const brand = ref('')
+const yarn_name = ref('')
+const colorway = ref('')
+const fiber_content = ref('')
 const yarn_weight = ref('')
 const yarn_amount = ref(false)
-const gauge = ref(false)
-const needles = ref('')
-const pattern_file_url = ref('')
-const pattern_file_name = ref('')
-const pattern_file_type = ref('')
-const pattern_file_size = ref(false)
 
 const emit = defineEmits(['close', 'open-login'])
 
@@ -75,43 +71,55 @@ const submit = async () => {
 
 <template>
   <div class="modal-overlay" @click.self="$emit('close')">
-    <div class="pattern-form">
+    <div class="stash-form">
       <button class="close-btn" @click="$emit('close')">×</button>
       <form @submit.prevent="submit">
         <div class="form-group">
-          <label class="modal-text" for="name">Pattern Name:</label>
+          <label class="modal-text" for="name">Yarn Name:</label>
           <input
             v-model="name"
             type="text"
             id="name"
             name="name"
-            placeholder="Enter pattern name"
+            placeholder="Enter yarn name"
             required
           />
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="description">Description:</label>
-          <textarea
-            v-model="description"
-            id="description"
-            name="description"
-            placeholder="Enter pattern description"
-            rows="4"
-          ></textarea>
+          <label class="modal-text" for="brand">Brand:</label>
+          <input
+            v-model="brand"
+            type="text"
+            id="brand"
+            name="brand"
+            placeholder="Enter yarn brand"
+            required
+          />
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="difficulty">Difficulty:</label>
-          <div class="modal-text">
-            <input
-              v-model="difficulty"
-              id="difficulty"
-              name="difficulty"
-              placeholder="Enter pattern difficulty"
-              required
-            />
-          </div>
+          <label class="modal-text" for="colorway">Colorway:</label>
+          <input
+            v-model="colorway"
+            type="text"
+            id="colorway"
+            name="colorway"
+            placeholder="Enter yarn colorway"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="modal-text" for="fiber_content">Fiber Content:</label>
+          <input
+            v-model="fiber_content"
+            type="text"
+            id="fiber_content"
+            name="fiber_content"
+            placeholder="Enter fiber content (e.g., 100% Wool)"
+            required
+          />
         </div>
 
         <div class="form-group">
@@ -138,42 +146,6 @@ const submit = async () => {
               required
             />
           </div>
-        </div>
-
-        <div class="form-group">
-          <label class="modal-text" for="gauge">Gauge:</label>
-          <div class="modal-text">
-            <input
-              v-model="gauge"
-              id="gauge"
-              name="gauge"
-              placeholder="Enter gauge (e.g., 4 stitches per inch)"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="modal-text" for="needles">Needles:</label>
-          <div class="modal-text">
-            <input
-              v-model="needles"
-              id="needles"
-              name="needles"
-              placeholder="(e.g., 4.5mm circular needles)"
-            />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="modal-text" for="pattern_file">Pattern File:</label>
-          <input
-            type="file"
-            id="pattern_file"
-            name="pattern_file"
-            placeholder="Upload pattern file"
-            required
-            />
         </div>
 
         <button type="submit" class="submit-btn">
