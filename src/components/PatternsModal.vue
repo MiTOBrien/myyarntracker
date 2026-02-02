@@ -103,28 +103,48 @@ const submit = async () => {
 
         <div class="form-group">
           <label class="modal-text" for="difficulty">Difficulty:</label>
-          <div class="modal-text">
-            <input
-              v-model="difficulty"
-              id="difficulty"
-              name="difficulty"
-              placeholder="Enter pattern difficulty"
-              required
-            />
-          </div>
+          <select v-model="difficulty" id="difficulty" name="difficulty" required>
+            <option value="">Select difficulty</option>
+            <option value="beginner">Beginner</option>
+            <option value="easy">Easy</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="experienced">Experienced</option>
+          </select>
         </div>
 
         <div class="form-group">
           <label class="modal-text" for="yarn_weight">Yarn Weight:</label>
-          <div class="modal-text">
-            <input
-              v-model="yarn_weight"
-              id="yarn_weight"
-              name="yarn_weight"
-              placeholder="Enter yarn weight"
-              required
-            />
-          </div>
+          <select v-model="yarn_weight" id="yarn_weight" name="yarn_weight" class="modal-text">
+            <option value="">Select yarn weight</option>
+            <option value="lace">Lace</option>
+            <option value="superfine">Superfine</option>
+            <option value="fine">Fine</option>
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="bulky">Bulky</option>
+            <option value="superbulky">Super Bulky</option>
+            <option value="jumbo">Jumbo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="modal-text" for="fiber">Fiber:</label>
+          <select v-model="fiber" id="fiber" name="fiber" class="modal-text">
+            <option value="">Select fiber</option>
+            <option value="alpaca">Alpaca</option>
+            <option value="cashmere">Cashmere</option>
+            <option value="mohair">Mohair</option>
+            <option value="silk">Silk</option>
+            <option value="wool">Wool</option>
+            <option value="bamboo">Bamboo</option>
+            <option value="cotton">Cotton</option>
+            <option value="linen">Linen</option>
+            <option value="rayon">Rayon</option>
+            <option value="acrylic">Acrylic</option>
+            <option value="nylon">Nylon</option>
+            <option value="polyester">Polyester</option>
+            <option value="stellina">Stellina</option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -173,12 +193,10 @@ const submit = async () => {
             name="pattern_file"
             placeholder="Upload pattern file"
             required
-            />
+          />
         </div>
 
-        <button type="submit" class="submit-btn">
-          Submit
-        </button>
+        <button type="submit" class="submit-btn">Submit</button>
       </form>
     </div>
   </div>
