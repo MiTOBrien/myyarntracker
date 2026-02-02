@@ -8,9 +8,11 @@ const name = ref('')
 const brand = ref('')
 const yarn_name = ref('')
 const colorway = ref('')
+const dye_lot = ref('')
 const fiber_content = ref('')
 const yarn_weight = ref('')
-const yarn_amount = ref(false)
+const yardage = ref(false)
+const skeins = ref(false)
 
 const emit = defineEmits(['close', 'open-login'])
 
@@ -136,13 +138,13 @@ const submit = async () => {
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="yarn_amount">Yarn Amount:</label>
+          <label class="modal-text" for="yardage">Yarn Amount:</label>
           <div class="modal-text">
             <input
-              v-model="yarn_amount"
-              id="yarn_amount"
-              name="yarn_amount"
-              placeholder="Enter yarn amount"
+              v-model="yardage"
+              id="yardage"
+              name="yardage"
+              placeholder="Enter yardage"
               required
             />
           </div>
