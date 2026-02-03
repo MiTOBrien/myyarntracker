@@ -10,8 +10,8 @@ const colorway = ref('')
 const dye_lot = ref('')
 const fiber = ref('')
 const yarn_weight = ref('')
-const yardage = ref(false)
-const num_skeins = ref(false)
+const yardage = ref('')
+const num_skeins = ref(1)
 
 const emit = defineEmits(['close', 'open-login'])
 
@@ -161,11 +161,12 @@ const submit = async () => {
         <div class="form-group">
           <label class="modal-text" for="yardage">Yardage per skein:</label>
             <input
-              v-model="yardage"
-              type="text"
+              v-model.number="yardage"
+              type="number"
               id="yardage"
               name="yardage"
               placeholder="Enter yardage"
+              min="0"
               required
             />
         </div>
@@ -173,10 +174,12 @@ const submit = async () => {
         <div class="form-group">
           <label class="modal-text" for="num_skeins">Number of Skeins:</label>
             <input
-              v-model="num_skeins"
+              v-model.number="num_skeins"
+              type="number"
               id="num_skeins"
               name="num_skeins"
               placeholder="Enter number of skeins"
+              min="1"
               required
             />
         </div>
