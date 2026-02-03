@@ -9,10 +9,10 @@ const brand = ref('')
 const yarn_name = ref('')
 const colorway = ref('')
 const dye_lot = ref('')
-const fiber_content = ref('')
+const fiber = ref('')
 const yarn_weight = ref('')
 const yardage = ref(false)
-const skeins = ref(false)
+const num_skeins = ref(false)
 
 const emit = defineEmits(['close', 'open-login'])
 
@@ -77,6 +77,18 @@ const submit = async () => {
       <button class="close-btn" @click="$emit('close')">×</button>
       <form @submit.prevent="submit">
         <div class="form-group">
+          <label class="modal-text" for="brand">Brand:</label>
+          <input
+            v-model="brand"
+            type="text"
+            id="brand"
+            name="brand"
+            placeholder="Enter yarn brand"
+            required
+          />
+        </div>
+
+        <div class="form-group">
           <label class="modal-text" for="name">Yarn Name:</label>
           <input
             v-model="name"
@@ -88,17 +100,6 @@ const submit = async () => {
           />
         </div>
 
-        <div class="form-group">
-          <label class="modal-text" for="brand">Brand:</label>
-          <input
-            v-model="brand"
-            type="text"
-            id="brand"
-            name="brand"
-            placeholder="Enter yarn brand"
-            required
-          />
-        </div>
 
         <div class="form-group">
           <label class="modal-text" for="colorway">Colorway:</label>
@@ -113,41 +114,72 @@ const submit = async () => {
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="fiber_content">Fiber Content:</label>
+          <label class="modal-text" for="dye_lot">Dye Lot:</label>
           <input
-            v-model="fiber_content"
+            v-model="dye_lot"
             type="text"
-            id="fiber_content"
-            name="fiber_content"
-            placeholder="Enter fiber content (e.g., 100% Wool)"
-            required
+            id="dye_lot"
+            name="dye_lot"
+            placeholder="Enter dye lot"
           />
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="yarn_weight">Yarn Weight:</label>
-          <div class="modal-text">
-            <input
-              v-model="yarn_weight"
-              id="yarn_weight"
-              name="yarn_weight"
-              placeholder="Enter yarn weight"
-              required
-            />
-          </div>
+          <label class="modal-text" for="fiber">Fiber:</label>
+          <select v-model="fiber" id="fiber" name="fiber" class="modal-text">
+            <option value="">Select fiber</option>
+            <option value="alpaca">Alpaca</option>
+            <option value="cashmere">Cashmere</option>
+            <option value="mohair">Mohair</option>
+            <option value="silk">Silk</option>
+            <option value="wool">Wool</option>
+            <option value="bamboo">Bamboo</option>
+            <option value="cotton">Cotton</option>
+            <option value="linen">Linen</option>
+            <option value="rayon">Rayon</option>
+            <option value="acrylic">Acrylic</option>
+            <option value="nylon">Nylon</option>
+            <option value="polyester">Polyester</option>
+            <option value="stellina">Stellina</option>
+          </select>
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="yardage">Yarn Amount:</label>
-          <div class="modal-text">
+          <label class="modal-text" for="yarn_weight">Yarn Weight:</label>
+          <select v-model="yarn_weight" id="yarn_weight" name="yarn_weight" class="modal-text">
+            <option value="">Select yarn weight</option>
+            <option value="lace">Lace</option>
+            <option value="superfine">Superfine</option>
+            <option value="fine">Fine</option>
+            <option value="light">Light</option>
+            <option value="medium">Medium</option>
+            <option value="bulky">Bulky</option>
+            <option value="superbulky">Super Bulky</option>
+            <option value="jumbo">Jumbo</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="modal-text" for="yardage">Yardage per skein:</label>
             <input
               v-model="yardage"
+              type="text"
               id="yardage"
               name="yardage"
               placeholder="Enter yardage"
               required
             />
-          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="modal-text" for="num_skeins">Number of Skeins:</label>
+            <input
+              v-model="num_skeins"
+              id="num_skeins"
+              name="num_skeins"
+              placeholder="Enter number of skeins"
+              required
+            />
         </div>
 
         <button type="submit" class="submit-btn">
