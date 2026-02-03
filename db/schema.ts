@@ -31,3 +31,19 @@ export const patterns = pgTable('patterns', {
   pattern_file_size: integer('pattern_file_size'),
   created_at: timestamp('created_at').defaultNow(),
 })
+
+export const stash = pgTable('stash', {
+  id: serial('id').primaryKey(),
+  user_id: integer('user_id')
+    .notNull()
+    .references(() => users.id),
+  brand: varchar('brand', { length: 255 }).notNull(),
+  yarn_name: varchar('yarn_name', { length: 255 }).notNull(),
+  colorway: varchar('colorway', { length: 255 }).notNull(),
+  dye_lot: varchar('dye_lot', { length: 100 }).notNull(),
+  fiber: varchar('fiber', { length: 255 }).notNull(),
+  yarn_weight: varchar('yarn_weight', { length: 100 }).notNull(),
+  yardage: integer('yardage').notNull(),
+  num_skeins: integer('num_skeins').notNull().default(1),
+  created_at: timestamp('created_at').defaultNow(),
+})

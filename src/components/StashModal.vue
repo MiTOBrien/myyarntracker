@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/useUserStore'
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
-const name = ref('')
 const brand = ref('')
 const yarn_name = ref('')
 const colorway = ref('')
@@ -89,12 +88,12 @@ const submit = async () => {
         </div>
 
         <div class="form-group">
-          <label class="modal-text" for="name">Yarn Name:</label>
+          <label class="modal-text" for="yarn_name">Yarn Name:</label>
           <input
-            v-model="name"
+            v-model="yarn_name"
             type="text"
-            id="name"
-            name="name"
+            id="yarn_name"
+            name="yarn_name"
             placeholder="Enter yarn name"
             required
           />
